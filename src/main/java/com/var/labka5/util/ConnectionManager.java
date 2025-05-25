@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
     private final static String DB_USER = "postgres";
-    private final static String DB_URL = "jdbc:postgresql://localhost:5433/postgres";
-    private final static String DB_PASSWORD = "postgres";
+    private final static String DB_URL = "jdbc:postgresql://host.docker.internal:5434/postgres";
+    private final static String DB_PASSWORD = "root";
 
     public static Connection open() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
