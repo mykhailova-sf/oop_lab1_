@@ -1,0 +1,39 @@
+plugins {
+  id 'java'
+  id 'war'
+}
+
+group 'com.var'
+version '1.0-SNAPSHOT'
+
+repositories {
+  mavenCentral()
+}
+war {
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+ext {
+  junitVersion = '5.9.2'
+}
+
+sourceCompatibility = "14"
+targetCompatibility = "14"
+
+tasks.withType(JavaCompile) {
+  options.encoding = 'UTF-8'
+}
+
+dependencies {
+  compileOnly('jakarta.servlet:jakarta.servlet-api:5.0.0')
+  implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+  implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+  implementation 'org.postgresql:postgresql:42.7.3'
+  implementation("org.xerial:sqlite-jdbc:3.49.1.0")
+  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+
+test {
+useJUnitPlatform()}
